@@ -25,10 +25,7 @@ struct WorldClockView: View {
             }
             .tag(0)
             
-            
-            NavigationLink(destination: CountryView()) {
-                Text("Favourites")
-            }
+            CountryView()
             .tabItem {
                     Image(systemName: "star.square")
                     Text("Favourites")
@@ -38,7 +35,7 @@ struct WorldClockView: View {
     }
     
     fileprivate func listOfCountries() -> some View {
-        return List(viewModel.countries, id: \.id) { country in
+        return List(viewModel.countryList, id: \.id) { country in
             HStack {
                 
                 VStack(alignment: .leading) {
@@ -63,7 +60,7 @@ struct WorldClockView: View {
                     Spacer()
 
                     Button {
-                        viewModel.countryTapped(with: country.id)
+                        viewModel.countryTapped(with: country)
                     } label: {
                         Image(systemName: country.isFavourite ? "star.fill" : "star")
                     }

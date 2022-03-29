@@ -7,11 +7,17 @@
 
 import Foundation
 
-struct WorldClock: Decodable, Hashable{
+struct WorldClock: Decodable, Hashable {
     let name: String
     let capital: String?
     let region: String?
     let timezones: [String]?
+    let population: Int?
+    let flags: Flags?
+}
+
+struct Flags: Decodable, Hashable {
+    let png: String?
 }
 
 struct WorldClockModel {
@@ -27,6 +33,16 @@ struct WorldClockModel {
     
     var id: Int
  
+    var flagURL: String {
+        guard let image = worldClock.flags?.png else { return "" }
+        return image
+    }
+    
+    var population: Int32 {
+        guard let pop = worldClock.population else { return 0 }
+        return Int32(pop)
+    }
+    
     var name: String {
         return worldClock.name
     }

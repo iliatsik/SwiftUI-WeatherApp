@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC13622B27F2D45C006A379D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC13622A27F2D45C006A379D /* CoreDataManager.swift */; };
+		DC13622F27F2DB3E006A379D /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC13622E27F2DB3E006A379D /* CountryViewModel.swift */; };
 		DC420CAB27ECEA4700EF097A /* WeatherApp_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CAA27ECEA4700EF097A /* WeatherApp_SwiftUIApp.swift */; };
 		DC420CAF27ECEA4900EF097A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC420CAE27ECEA4900EF097A /* Assets.xcassets */; };
 		DC420CB227ECEA4900EF097A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC420CB127ECEA4900EF097A /* Preview Assets.xcassets */; };
@@ -18,9 +20,12 @@
 		DCEB905E27EDBF2D00182956 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905D27EDBF2D00182956 /* UIScreen.swift */; };
 		DCEB906027EDC6A300182956 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905F27EDC6A300182956 /* Calendar.swift */; };
 		DCEB906327EDE19F00182956 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB906227EDE19F00182956 /* CountryView.swift */; };
+		DCEB906827F1C86200182956 /* Country.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCEB906627F1C86200182956 /* Country.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC13622A27F2D45C006A379D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DC13622E27F2DB3E006A379D /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		DC420CA727ECEA4700EF097A /* WeatherApp-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherApp-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC420CAA27ECEA4700EF097A /* WeatherApp_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp_SwiftUIApp.swift; sourceTree = "<group>"; };
 		DC420CAE27ECEA4900EF097A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,6 +38,7 @@
 		DCEB905D27EDBF2D00182956 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		DCEB905F27EDC6A300182956 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		DCEB906227EDE19F00182956 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		DCEB906727F1C86200182956 /* Country.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Country.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +52,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC13622927F2D449006A379D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCEB906627F1C86200182956 /* Country.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DC13622C27F2D460006A379D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DC13622A27F2D45C006A379D /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DC13622D27F2DB30006A379D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC13622E27F2DB3E006A379D /* CountryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DC420C9E27ECEA4700EF097A = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +158,7 @@
 		DC420CC427ECF49B00EF097A /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				DCEB906527F1C85400182956 /* CoreData */,
 				DCEB905C27EDBF2200182956 /* Extensions */,
 				DC420CC827ECF58B00EF097A /* Constants */,
 				DC420CC527ECF4A200EF097A /* Network */,
@@ -163,6 +194,7 @@
 		DCEB906127EDE18D00182956 /* Country */ = {
 			isa = PBXGroup;
 			children = (
+				DC13622D27F2DB30006A379D /* ViewModel */,
 				DCEB906427EDE1A300182956 /* View */,
 			);
 			path = Country;
@@ -174,6 +206,15 @@
 				DCEB906227EDE19F00182956 /* CountryView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DCEB906527F1C85400182956 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				DC13622C27F2D460006A379D /* Manager */,
+				DC13622927F2D449006A379D /* Model */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +295,10 @@
 				DC420CC327ECF2FE00EF097A /* WorldClockModel.swift in Sources */,
 				DC420CBB27ECF0D000EF097A /* WorldClockView.swift in Sources */,
 				DCEB905E27EDBF2D00182956 /* UIScreen.swift in Sources */,
+				DCEB906827F1C86200182956 /* Country.xcdatamodeld in Sources */,
+				DC13622F27F2DB3E006A379D /* CountryViewModel.swift in Sources */,
 				DC420CCA27ECF59600EF097A /* ApiEndPoints.swift in Sources */,
+				DC13622B27F2D45C006A379D /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +499,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DCEB906627F1C86200182956 /* Country.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DCEB906727F1C86200182956 /* Country.xcdatamodel */,
+			);
+			currentVersion = DCEB906727F1C86200182956 /* Country.xcdatamodel */;
+			path = Country.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DC420C9F27ECEA4700EF097A /* Project object */;
 }

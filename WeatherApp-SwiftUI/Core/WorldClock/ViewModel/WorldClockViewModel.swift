@@ -7,15 +7,21 @@
 
 import Foundation
 import Combine
+import CoreData
 
 final class WorldClockViewModel: ObservableObject  {
     
     private let networkService = NetworkService()
-    
-    @Published var countries = [WorldClockModel]()
+    @Published var filteredCountryList = [WorldClockModel]()
     @Published var searchText = ""
-    var allCountries = [WorldClockModel]()
-    
+
+    var countryList: [WorldClockModel] {
+        if searchText.isEmpty {
+            return filteredCountryList
+        } else {
+            return filteredCountryList.filter { $0.name.contains(searchText) }
+        }
+    }
     
     var cancellable = Set<AnyCancellable>()
     
@@ -28,21 +34,29 @@ final class WorldClockViewModel: ObservableObject  {
                 print(error)
             }
         }, receiveValue: { countryList in
-            self.countries = countryList.enumerated().map { WorldClockModel(worldClock: $0.element,
+            self.filteredCountryList = countryList.enumerated().map { WorldClockModel(worldClock: $0.element,
                                                                             id: $0.offset)}
         })
             .store(in: &cancellable)
     }
     
-    func countryTapped(with id: Int) {
-        countries[id].isFavourite.toggle()
-        //core data davaupdateo da tavidan davfetcho
+    func countryTapped(with country: WorldClockModel) {
+        filteredCountryList[country.id].isFavourite.toggle()
+        
+        let savedCountry = Country(context: CoreDataManager.shared.viewContext)
+        savedCountry.timezone = country.timeZone
+        savedCountry.region = country.region
+        savedCountry.capital = country.capital
+        savedCountry.name = country.name
+        savedCountry.identifier  = Int64(country.id)
+        savedCountry.flagURL = country.flagURL
+        savedCountry.population = country.population
+        
+        if !filteredCountryList[country.id].isFavourite {
+            CoreDataManager.shared.delete(country: savedCountry)
+        }
+        
+        CoreDataManager.shared.save()
     }
-    
-    func getCountries() -> AnyPublisher<[WorldClockModel], Never> {
-        $countries.compactMap { [weak self] in
-            guard let self = self else { return nil}
-            return $0.filter { $0.name.contains(self.searchText) }
-        }.eraseToAnyPublisher()
-    }
+
 }
