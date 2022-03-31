@@ -44,9 +44,11 @@ class CoreDataManager {
         }
     }
     
-    
-     func delete(country: Country) {
-         viewContext.delete(country)
-     }
-
+    func delete(at name: String) {
+        getAllSavedCountries().forEach { savedCountry in
+            if savedCountry.name == name {
+                viewContext.delete(savedCountry)
+            }
+        }
+    }
 }

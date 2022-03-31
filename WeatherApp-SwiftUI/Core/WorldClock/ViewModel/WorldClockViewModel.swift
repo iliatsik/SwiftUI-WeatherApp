@@ -50,12 +50,14 @@ final class WorldClockViewModel: ObservableObject  {
     
     func countryTapped(with country: WorldClockModel) {
         filteredCountryList[country.id].isFavourite.toggle()
-        
-        let savedCountry = Country(context: CoreDataManager.shared.viewContext)
-        
+                
         if !filteredCountryList[country.id].isFavourite {
-            CoreDataManager.shared.delete(country: savedCountry)
+            CoreDataManager.shared.delete(at: country.name)
         } else {
+            CoreDataManager.shared.getAllSavedCountries().forEach { savedCountry in
+                if savedCountry.name == country.name { return }
+            }
+            let savedCountry = Country(context: CoreDataManager.shared.viewContext)
             savedCountry.timezone = country.timeZone
             savedCountry.region = country.region
             savedCountry.capital = country.capital
