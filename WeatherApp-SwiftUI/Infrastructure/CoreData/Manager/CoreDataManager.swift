@@ -30,7 +30,7 @@ class CoreDataManager {
     func getAllSavedCountries() -> [Country] {
         let request: NSFetchRequest<Country>  = Country.fetchRequest()
         do {
-            return try viewContext.fetch(request )
+            return try viewContext.fetch(request)
         } catch {
             return []
         }

@@ -36,6 +36,14 @@ final class WorldClockViewModel: ObservableObject  {
         }, receiveValue: { countryList in
             self.filteredCountryList = countryList.enumerated().map { WorldClockModel(worldClock: $0.element,
                                                                             id: $0.offset)}
+            
+            for index in 0..<self.filteredCountryList.count {
+                CoreDataManager.shared.getAllSavedCountries().forEach { country in
+                    if self.filteredCountryList[index].name == country.name {
+                        self.filteredCountryList[index].isFavourite = true
+                    }
+                }
+            }
         })
             .store(in: &cancellable)
     }
@@ -44,16 +52,17 @@ final class WorldClockViewModel: ObservableObject  {
         filteredCountryList[country.id].isFavourite.toggle()
         
         let savedCountry = Country(context: CoreDataManager.shared.viewContext)
-        savedCountry.timezone = country.timeZone
-        savedCountry.region = country.region
-        savedCountry.capital = country.capital
-        savedCountry.name = country.name
-        savedCountry.identifier  = Int64(country.id)
-        savedCountry.flagURL = country.flagURL
-        savedCountry.population = country.population
         
         if !filteredCountryList[country.id].isFavourite {
             CoreDataManager.shared.delete(country: savedCountry)
+        } else {
+            savedCountry.timezone = country.timeZone
+            savedCountry.region = country.region
+            savedCountry.capital = country.capital
+            savedCountry.name = country.name
+            savedCountry.identifier = Int64(country.id)
+            savedCountry.flagURL = country.flagURL
+            savedCountry.population = country.population
         }
         
         CoreDataManager.shared.save()
