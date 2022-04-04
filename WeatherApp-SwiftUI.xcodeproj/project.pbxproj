@@ -17,6 +17,7 @@
 		DC420CC327ECF2FE00EF097A /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC227ECF2FE00EF097A /* WorldClockModel.swift */; };
 		DC420CC727ECF4AF00EF097A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC627ECF4AF00EF097A /* NetworkService.swift */; };
 		DC420CCA27ECF59600EF097A /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC927ECF59600EF097A /* ApiEndPoints.swift */; };
+		DCE0376227F6F045003A74A4 /* MessageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0376127F6F045003A74A4 /* MessageDocument.swift */; };
 		DCEB905E27EDBF2D00182956 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905D27EDBF2D00182956 /* UIScreen.swift */; };
 		DCEB906027EDC6A300182956 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905F27EDC6A300182956 /* Calendar.swift */; };
 		DCEB906327EDE19F00182956 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB906227EDE19F00182956 /* CountryView.swift */; };
@@ -35,6 +36,7 @@
 		DC420CC227ECF2FE00EF097A /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
 		DC420CC627ECF4AF00EF097A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DC420CC927ECF59600EF097A /* ApiEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
+		DCE0376127F6F045003A74A4 /* MessageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocument.swift; sourceTree = "<group>"; };
 		DCEB905D27EDBF2D00182956 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		DCEB905F27EDC6A300182956 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		DCEB906227EDE19F00182956 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		DC420CC427ECF49B00EF097A /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				DCE0376027F6F026003A74A4 /* FileExporter */,
 				DCEB906527F1C85400182956 /* CoreData */,
 				DCEB905C27EDBF2200182956 /* Extensions */,
 				DC420CC827ECF58B00EF097A /* Constants */,
@@ -180,6 +183,14 @@
 				DC420CC927ECF59600EF097A /* ApiEndPoints.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		DCE0376027F6F026003A74A4 /* FileExporter */ = {
+			isa = PBXGroup;
+			children = (
+				DCE0376127F6F045003A74A4 /* MessageDocument.swift */,
+			);
+			path = FileExporter;
 			sourceTree = "<group>";
 		};
 		DCEB905C27EDBF2200182956 /* Extensions */ = {
@@ -295,6 +306,7 @@
 				DC420CC327ECF2FE00EF097A /* WorldClockModel.swift in Sources */,
 				DC420CBB27ECF0D000EF097A /* WorldClockView.swift in Sources */,
 				DCEB905E27EDBF2D00182956 /* UIScreen.swift in Sources */,
+				DCE0376227F6F045003A74A4 /* MessageDocument.swift in Sources */,
 				DCEB906827F1C86200182956 /* Country.xcdatamodeld in Sources */,
 				DC13622F27F2DB3E006A379D /* CountryViewModel.swift in Sources */,
 				DC420CCA27ECF59600EF097A /* ApiEndPoints.swift in Sources */,

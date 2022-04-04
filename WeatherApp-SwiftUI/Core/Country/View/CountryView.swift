@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct CountryView: View {
     
     @ObservedObject private var viewModel = CountryViewModel()
-    
+    @State private var isExporting: Bool = false
+
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
                 List(viewModel.countries, id: \.identifier) { country in
                     VStack {
@@ -51,11 +53,32 @@ struct CountryView: View {
                         .cornerRadius(15)
                         .shadow(color: Color.white, radius: 6, x: 0.4, y: 0.8)
                     
-                    
+                        .toolbar {
+                            Button {
+                                
+                                isExporting = true
+                                viewModel.configureMessage()
+                            } label: {
+                                Image(systemName:   "square.and.arrow.up")
+                            }
+                            
+                        }
                 }.listStyle(.plain)
+                
             }.onAppear(perform: {
-                viewModel.getAllCountries()
-            })
+                viewModel.getAllCountries();
+            }).fileExporter(
+                isPresented: $isExporting,
+                document: viewModel.document,
+                contentType: .plainText,
+                defaultFilename: "Message"
+            ) { result in
+                if case .success = result {
+                    print("Success")
+                } else {
+                   print("Failure")
+                }
+            }
         }
     }
 }
