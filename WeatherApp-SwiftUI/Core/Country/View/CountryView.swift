@@ -52,17 +52,6 @@ struct CountryView: View {
                         .opacity(0.4)
                         .cornerRadius(15)
                         .shadow(color: Color.white, radius: 6, x: 0.4, y: 0.8)
-                    
-                        .toolbar {
-                            Button {
-                                
-                                isExporting = true
-                                viewModel.configureMessage()
-                            } label: {
-                                Image(systemName:   "square.and.arrow.up")
-                            }
-                            
-                        }
                 }.listStyle(.plain)
                 
             }.onAppear(perform: {
@@ -76,9 +65,21 @@ struct CountryView: View {
                 if case .success = result {
                     print("Success")
                 } else {
-                   print("Failure")
+                    print("Failure")
                 }
+            }.navigationBarItems(leading:
+                                    Button {
+                isExporting = true
+                viewModel.configureMessage()
+            } label: {
+                Text("Export")
             }
+                                 ,trailing:
+                                    Button {
+                print("TAPPED")
+            } label: {
+                Image(systemName: "square.and.arrow.up")
+            } )
         }
     }
 }
