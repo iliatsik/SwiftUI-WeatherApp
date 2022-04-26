@@ -11,10 +11,11 @@ import CoreData
 
 final class WorldClockViewModel: ObservableObject  {
     
-    private let networkService = NetworkService()
     @Published var filteredCountryList = [WorldClockModel]()
     @Published var searchText = ""
-
+    var cancellable = Set<AnyCancellable>()
+    var countryRepo = CountryRepository()
+    
     var countryList: [WorldClockModel] {
         if searchText.isEmpty {
             return filteredCountryList
@@ -23,19 +24,10 @@ final class WorldClockViewModel: ObservableObject  {
         }
     }
     
-    var cancellable = Set<AnyCancellable>()
-    
     func fetchCountries() {
-        networkService.fetchCountries().sink(receiveCompletion: { result in
-            switch result {
-            case .finished:
-                print("Finished")
-            case .failure(let error):
-                print(error)
-            }
-        }, receiveValue: { countryList in
+        countryRepo.fetchCountries { (countryList: [WorldClock]) in
             self.filteredCountryList = countryList.enumerated().map { WorldClockModel(worldClock: $0.element,
-                                                                            id: $0.offset)}
+                                                                                      id: $0.offset)}
             
             for index in 0..<self.filteredCountryList.count {
                 CoreDataManager.shared.getAllSavedCountries().forEach { country in
@@ -44,8 +36,7 @@ final class WorldClockViewModel: ObservableObject  {
                     }
                 }
             }
-        })
-            .store(in: &cancellable)
+        }
     }
     
     func countryTapped(with country: WorldClockModel) {

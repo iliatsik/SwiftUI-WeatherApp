@@ -7,15 +7,20 @@
 
 import Foundation
 
-class CountryViewModel: ObservableObject {
+@MainActor class CountryViewModel: ObservableObject {
 
     private var messageArrayForCountries = ""
     
     @Published var countries: [Country] = []
     @Published var document: MessageDocument = MessageDocument(message: "")
-
+    @Published var isExporting = false
+    
     func getAllCountries() {
         countries = CoreDataManager.shared.getAllSavedCountries()
+    }
+    
+    func exportingToggle() {
+        isExporting.toggle()
     }
     
     func configureMessage() {

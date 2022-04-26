@@ -11,7 +11,6 @@ import UniformTypeIdentifiers
 struct CountryView: View {
     
     @ObservedObject private var viewModel = CountryViewModel()
-    @State private var isExporting: Bool = false
 
     var body: some View {
         NavigationView {
@@ -57,7 +56,7 @@ struct CountryView: View {
             }.onAppear(perform: {
                 viewModel.getAllCountries();
             }).fileExporter(
-                isPresented: $isExporting,
+                isPresented: $viewModel.isExporting,
                 document: viewModel.document,
                 contentType: .plainText,
                 defaultFilename: "Message"
@@ -69,7 +68,7 @@ struct CountryView: View {
                 }
             }.navigationBarItems(leading:
                                     Button {
-                isExporting = true
+                viewModel.exportingToggle()
                 viewModel.configureMessage()
             } label: {
                 Text("Export")

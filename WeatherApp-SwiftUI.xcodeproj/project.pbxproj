@@ -16,7 +16,8 @@
 		DC420CC027ECF2C600EF097A /* WorldClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CBF27ECF2C600EF097A /* WorldClockViewModel.swift */; };
 		DC420CC327ECF2FE00EF097A /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC227ECF2FE00EF097A /* WorldClockModel.swift */; };
 		DC420CC727ECF4AF00EF097A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC627ECF4AF00EF097A /* NetworkService.swift */; };
-		DC420CCA27ECF59600EF097A /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC927ECF59600EF097A /* ApiEndPoints.swift */; };
+		DC420CCA27ECF59600EF097A /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC420CC927ECF59600EF097A /* ApiEndpoints.swift */; };
+		DC436BC5280EA39600BD9806 /* CountryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC436BC4280EA39600BD9806 /* CountryRepository.swift */; };
 		DCE0376227F6F045003A74A4 /* MessageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE0376127F6F045003A74A4 /* MessageDocument.swift */; };
 		DCEB905E27EDBF2D00182956 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905D27EDBF2D00182956 /* UIScreen.swift */; };
 		DCEB906027EDC6A300182956 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB905F27EDC6A300182956 /* Calendar.swift */; };
@@ -35,7 +36,8 @@
 		DC420CBF27ECF2C600EF097A /* WorldClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockViewModel.swift; sourceTree = "<group>"; };
 		DC420CC227ECF2FE00EF097A /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
 		DC420CC627ECF4AF00EF097A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		DC420CC927ECF59600EF097A /* ApiEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
+		DC420CC927ECF59600EF097A /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		DC436BC4280EA39600BD9806 /* CountryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRepository.swift; sourceTree = "<group>"; };
 		DCE0376127F6F045003A74A4 /* MessageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocument.swift; sourceTree = "<group>"; };
 		DCEB905D27EDBF2D00182956 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		DCEB905F27EDC6A300182956 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		DC420CC427ECF49B00EF097A /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				DC436BC3280EA37D00BD9806 /* Repository */,
 				DCE0376027F6F026003A74A4 /* FileExporter */,
 				DCEB906527F1C85400182956 /* CoreData */,
 				DCEB905C27EDBF2200182956 /* Extensions */,
@@ -180,9 +183,17 @@
 		DC420CC827ECF58B00EF097A /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				DC420CC927ECF59600EF097A /* ApiEndPoints.swift */,
+				DC420CC927ECF59600EF097A /* ApiEndpoints.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		DC436BC3280EA37D00BD9806 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DC436BC4280EA39600BD9806 /* CountryRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DCE0376027F6F026003A74A4 /* FileExporter */ = {
@@ -309,7 +320,8 @@
 				DCE0376227F6F045003A74A4 /* MessageDocument.swift in Sources */,
 				DCEB906827F1C86200182956 /* Country.xcdatamodeld in Sources */,
 				DC13622F27F2DB3E006A379D /* CountryViewModel.swift in Sources */,
-				DC420CCA27ECF59600EF097A /* ApiEndPoints.swift in Sources */,
+				DC420CCA27ECF59600EF097A /* ApiEndpoints.swift in Sources */,
+				DC436BC5280EA39600BD9806 /* CountryRepository.swift in Sources */,
 				DC13622B27F2D45C006A379D /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

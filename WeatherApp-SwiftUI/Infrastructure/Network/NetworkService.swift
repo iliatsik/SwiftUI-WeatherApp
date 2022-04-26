@@ -8,17 +8,17 @@
 import Foundation
 import Combine
 
-final class NetworkService {
-
-    func fetchCountries() -> AnyPublisher<[WorldClock], Error> {
-         
-        let url = URL(string: ApiEndpoints.countryURL)
-
+class NetworkService {
+    
+    func fetch<T: Decodable>(with url: String) -> AnyPublisher<[T], Error> {
+        
+        let url = URL(string: url)
+            
         return URLSession.shared.dataTaskPublisher(for: url!)
             .map { $0.data }
-            .decode(type:  [WorldClock].self, decoder: JSONDecoder())
+            .decode(type:  [T].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher() 
+            .eraseToAnyPublisher()
     }
 
 }
