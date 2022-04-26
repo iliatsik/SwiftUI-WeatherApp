@@ -13,7 +13,7 @@ class CountryRepository {
     private let networkService = NetworkService()
     private var cancellable = Set<AnyCancellable>()
 
-    func fetchCountries<T: Decodable>(completion: @escaping ([T]) -> Void) {
+    func getCountries<T: Decodable>(completion: @escaping ([T]) -> Void) {
         networkService.fetch(with: ApiEndpoints.countryURL).sink { _ in
         } receiveValue: { countries in
             completion(countries)

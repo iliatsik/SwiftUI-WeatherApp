@@ -24,8 +24,8 @@ final class WorldClockViewModel: ObservableObject  {
         }
     }
     
-    func fetchCountries() {
-        countryRepo.fetchCountries { (countryList: [WorldClock]) in
+    func getCountries() {
+        countryRepo.getCountries { (countryList: [WorldClock]) in
             self.filteredCountryList = countryList.enumerated().map { WorldClockModel(worldClock: $0.element,
                                                                                       id: $0.offset)}
             

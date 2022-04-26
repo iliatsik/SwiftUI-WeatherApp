@@ -80,7 +80,7 @@ struct WorldClockView: View {
             
         }
         .listStyle(.plain)
-        .onAppear(perform: self.viewModel.fetchCountries)
+        .onAppear(perform: self.viewModel.getCountries)
     }
 }
 
