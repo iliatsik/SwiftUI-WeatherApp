@@ -15,15 +15,13 @@ import Foundation
     @Published var document: MessageDocument = MessageDocument(message: "")
     @Published var isExporting = false
     
-    func getAllCountries() {
-        countries = CoreDataManager.shared.getAllSavedCountries()
-    }
-    
-    func exportingToggle() {
-        isExporting.toggle()
+    func getAllCountries() -> [Country] {
+        CoreDataManager.shared.getAllSavedCountries()
     }
     
     func configureMessage() {
+        isExporting.toggle()
+
         countries.forEach { country in
             messageArrayForCountries += "Country: \(country.name ?? ""), Capital: \(country.capital ?? ""), Region: \(country.region ?? ""), Population: \(country.population). \n"
         }
